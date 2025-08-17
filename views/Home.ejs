@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body{
+            background: url(https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg) no-repeat;
+            background-size: cover;
+            height: 100vh;
+        }        
+       /* Navbar */
+        #navbar {
+            background-color: rgba(0,0,0,.2);
+            display: flex;
+            justify-content: space-between;  /* brand left, links right */
+            align-items: center;
+            height: 50px;
+            width: 100%;
+            padding: 0 20px;
+            overflow-x: hidden;  /* scroll बंद */
+            box-sizing: border-box;
+            position: sticky;
+            top:0;
+        }
+
+        #navbar .brand {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #navbar .links {
+            display: flex;
+            gap: 20px; /* links मध्ये space */
+        }
+
+        #navbar a {
+            text-decoration: none;
+            color: white;
+            line-height: 50px;
+            font-size: 16px;
+            padding: 0 10px;   /* योग्य padding */
+        }
+
+        #navbar a:hover {
+            color: yellow;
+        }
+
+        #navbar .hello {
+            color: #f3f3f3;
+            font-size: 16px;
+        }
+
+        /* Main Content */
+       #content {
+            margin-top: 200px;
+            display: grid;
+            place-items: center;
+        }
+
+        .typing {
+            font-family: monospace;
+            font-size: 2em;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid;
+            width: 0;
+            animation: typing 4s steps(40, start) forwards, blink .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 40ch }   /* 40 characters type होणार */
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent }
+        }
+
+                /* Responsive for mobile */
+        @media screen and (max-width: 768px) {
+            #navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 10px;
+            }
+            #navbar .links {
+                flex-direction: column;
+                gap: 10px;
+            }
+            #navbar a {
+                line-height: normal;
+                font-size: 14px;
+            }
+            .typing {
+                font-size: 1.5em;
+                width: 0;
+                animation: typing 4s steps(30, start) forwards, blink .75s step-end infinite;
+            }
+        }
+        @media screen and (max-width: 480px) {
+            .typing {
+                font-size: 1.2em;
+                animation: typing 4s steps(25, start) forwards, blink .75s step-end infinite;
+            }
+            #content {
+                margin-top: 80px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+   <body>
+    <!-- Navbar -->
+    <div id="navbar">
+        <div class="brand">Gov Notes</div>
+        <div class="links">
+            <% if(!user){ %>
+                <a href="/add">Register</a>
+                <a href="/login">Login</a>
+            <% } else { %>
+                <a href="/logout">Logout</a>
+            <% } %>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="content">
+         <% if(user){ %>
+            <h1 class="hello typing">Hello <%= user.fullname %></h1>
+        <% } %>
+        <h1 class="typing">Hello Welcome to Goverment notes website</h1>
+    </div>
+</body>
+
+
+</body>
+</html>
