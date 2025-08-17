@@ -1,6 +1,6 @@
 const express = require('express');
-const { registerRoute } = require('./routes/register');
-const { loginRoute } = require('./routes/login');
+const { registerRoute } = require('./routes/register.js');
+const { loginRoute } = require('./routes/login.js');
 const session = require('express-session');
 const app = express();
 require('dotenv').config();

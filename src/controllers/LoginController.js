@@ -46,7 +46,7 @@ let loginControllers = async (req,res) =>{
         //     token : jwt.sign( { email: userEx.email}, process.env.JWT_TOKEN)
         // });
     console.log(token);
-
+     
 ////////////Save user in session
         req.session.user = {
         fullname: userEx.fullname,
